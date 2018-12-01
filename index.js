@@ -30,7 +30,7 @@ exports.handler = (event, _, callback) => {
 
       let code = Items
         .filter(item => item.used.BOOL === false && item.reward.S === pathParameters.id)
-        .pop().code.S
+        .pop().id.S
 
       if (!code) {
         throw { status: 400, message: 'CodeHasBeenUsed' }
