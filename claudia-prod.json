@@ -1,0 +1,8 @@
+{
+  "lambda": {
+    "role": "arn:aws:iam::490542543401:role/ReadsDynamoDB",
+    "name": "prod-entry-status",
+    "region": "eu-west-1",
+    "sharedRole": true
+  }
+}
