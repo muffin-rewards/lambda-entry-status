@@ -10,9 +10,7 @@
     "url": "https://github.com/muffin-rewards/lambda-entry-status"
   },
   "scripts": {
-    "create:stage": "claudia create --name stage-entry-status --region eu-west-1 --handler index.handler --role arn:aws:iam::490542543401:role/ReadsDynamoDB --config claudia-stage.json",
-    "create:prod": "claudia create --name prod-entry-status --region eu-west-1 --handler index.handler --role arn:aws:iam::490542543401:role/ReadsDynamoDB --config claudia-prod.json",
-    "deploy:stage": "claudia update --config claudia-stage.json",
+    "create:prod": "claudia create --name prod-entry-status --region eu-west-1 --handler src/index.handler --role arn:aws:iam::490542543401:role/ReadsDynamoDB --config claudia-prod.json",
     "deploy:prod": "claudia update --config claudia-prod.json"
   },
   "devDependencies": {
