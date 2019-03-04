@@ -15,7 +15,7 @@ const headers = {
   'Access-Control-Allow-Origin': '*',
 }
 
-exports.handler = (event, _, callback) => {
+exports.handler = async (event, _, callback) => {
   /**
    * @param {number} statusCode Http statusCode to return
    * @param {string} body Response body

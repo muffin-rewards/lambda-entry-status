@@ -1,7 +1,7 @@
 {
   "name": "lambda-entry-status",
   "version": "1.0.0",
-  "author": "Michael Bausano <bausanomichal@gmail.com>",
+  "author": "Michael Bausano <michael@getmuffin.co.uk>",
   "license": "MIT",
   "description": "Checks if a user can reclaim given reward.",
   "main": "index.js",
@@ -10,7 +10,7 @@
     "url": "https://github.com/muffin-rewards/lambda-entry-status"
   },
   "scripts": {
-    "create:prod": "claudia create --name prod-entry-status --region eu-west-1 --handler src/index.handler --role arn:aws:iam::490542543401:role/ReadsDynamoDB --config claudia-prod.json",
+    "create:prod": "claudia create --name prod-entry-status --region eu-west-1 --handler src/index.handler --role arn:aws:iam::351847414812:role/MentionsPersistor --config claudia-prod.json",
     "deploy:prod": "claudia update --config claudia-prod.json"
   },
   "devDependencies": {
