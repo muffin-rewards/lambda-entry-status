@@ -37,12 +37,12 @@ exports.handler = async (event, _, callback) => {
 
     // If this is the first time user asks for redemption or they have waited
     // long enough to be able to redeem again, respond with 200.
-    if (lastUsed === null || Date.now() > Number(lastUsed) + redemptionDelay) {
+    if (lastUsed === null || Date.now() >= Number(lastUsed) + redemptionDelay) {
       return respond(200)
     }
 
     // The user is not eligible to redeem.
-    throw new RewardRedeemedException(403, lastUsed)
+    throw new RewardRedeemedException(403, Number(lastUsed) + redemptionDelay - Date.now())
   } catch (e) {
     if (e instanceof LambdaException) {
       return respond(e.status, e.message)

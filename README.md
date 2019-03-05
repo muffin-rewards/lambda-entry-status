@@ -16,7 +16,7 @@ Deploy with `npm run deploy:{env}`.
 
 If handle does not exists in mentions, we return `404`.
 
-If user has already redeemed, we return `403`.
+If user has already redeemed, we return `403` with milliseconds till the request can be retried.
 
 On unexpected server error, we return `500`.
 
