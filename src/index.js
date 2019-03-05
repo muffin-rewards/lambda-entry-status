@@ -23,15 +23,15 @@ exports.handler = async (event, _, callback) => {
   const respond = (statusCode, body = '') => callback(null, { statusCode, body, headers })
 
   /**
-   * @var {string} handle User Instagram handle
+   * @var {string} user Users Instagram handle
    *
    * @var {string} promoter Promoter that the user wants to collect a reward for
    */
-  const { handle, promoter } = event.pathParameters.handle
+  const { user, promoter } = event.pathParameters
 
   try {
     // If the mention could not be found, responds with 404.
-    const mention = await fetchMention(handle, promoter)
+    const mention = await fetchMention(user, promoter)
 
     const lastUsed = mention.usedAt ? mention.usedAt.N : null
 
