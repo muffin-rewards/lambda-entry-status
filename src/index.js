@@ -33,20 +33,17 @@ exports.handler = async (event, _, callback) => {
     // If the mention could not be found, responds with 404.
     const mention = await fetchMention(user, promoter)
 
-    const lastUsed = mention.usedAt ? mention.usedAt.N : null
+    const lastUsed = mention.redeemedAt ? mention.redeemedAt.N : null
 
     // If this is the first time user asks for redemption or they have waited
     // long enough to be able to redeem again, respond with 200.
-    if (lastUsed === null || Date.now() > lastUsed + redemptionDelay) {
+    if (lastUsed === null || Date.now() > Number(lastUsed) + redemptionDelay) {
       return respond(200)
     }
 
     // The user is not eligible to redeem.
     throw new RewardRedeemedException(403, lastUsed)
   } catch (e) {
-    // TODO: Remove console.log.
-    console.log(e)
-
     if (e instanceof LambdaException) {
       return respond(e.status, e.message)
     }

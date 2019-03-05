@@ -23,11 +23,15 @@ const delay = process.env.RETRY_DELAY
 const fetchMention = async (handle, promoter, retries = 0) => {
   return ddb.query({
     TableName: mentionsTable,
-    KeyConditionExpression: 'user = :u, promoter = :p',
+    ExpressionAttributeNames:{
+      '#u': 'user',
+      '#p': 'promoter',
+    },
     ExpressionAttributeValues: {
       ':u': { S: handle },
       ':p': { S: promoter },
     },
+    KeyConditionExpression: '#u = :u AND #p = :p',
   }).promise()
     .then(({ Items }) => {
       if (Items && Items.length) {
