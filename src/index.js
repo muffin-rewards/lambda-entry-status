@@ -38,7 +38,11 @@ exports.handler = async (event, _, callback) => {
     // If this is the first time user asks for redemption or they have waited
     // long enough to be able to redeem again, respond with 200.
     if (!lastUsed || Date.now() >= Number(lastUsed) + redemptionDelay) {
-      return respond(200)
+      return respond(200, JSON.stringify({
+        user,
+        caption: mention.caption.S,
+        url: mention.url.S,
+      }))
     }
 
     // The user is not eligible to redeem.
@@ -48,7 +52,6 @@ exports.handler = async (event, _, callback) => {
       return respond(e.status, e.message)
     }
 
-    // TODO: Custom message string.
     respond(500, e.message)
   }
 }
