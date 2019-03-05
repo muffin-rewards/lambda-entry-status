@@ -37,7 +37,7 @@ exports.handler = async (event, _, callback) => {
 
     // If this is the first time user asks for redemption or they have waited
     // long enough to be able to redeem again, respond with 200.
-    if (lastUsed === null || Date.now() >= Number(lastUsed) + redemptionDelay) {
+    if (!lastUsed || Date.now() >= Number(lastUsed) + redemptionDelay) {
       return respond(200)
     }
 
