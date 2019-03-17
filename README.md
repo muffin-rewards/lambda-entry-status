@@ -5,7 +5,7 @@ Checks if a user can reclaim given reward.
 ## Deployment
 Deploy with `npm run deploy:{env}`.
 
-### Enviroment variables
+### Environment variables
 
 - `MENTIONS_TABLE` that the entries are stored in
 - `MAX_RETRIES` indicates how many times do we check the DynamoDB before rejecting
